@@ -3,7 +3,7 @@
 # @brief 
 # @author df_justforfun@163.com
 # @version 1.0
-# @date 2018-08-21
+# @date 2018-11-28
 
 
 # from datetime import datetime, timezone
@@ -49,7 +49,7 @@ tle = Tle(line1, line2, satName)
 satellite = Satellite(tle)
 siteEuqator = Site().InitializeByDegLatAndDegLonAndKmAltAndName(lat, lon, alt)
 
-with open(os.path.join(ROOT_DIR, "output.txt"), "w") as f:
+with open(os.path.join(ROOT_DIR, "output.eph"), "w") as f:
     dataTime_UTC = startTime_UTC
 
     while dataTime_UTC <= endTime_UTC:
@@ -58,7 +58,7 @@ with open(os.path.join(ROOT_DIR, "output.txt"), "w") as f:
 
         if topoLook.ElevationDeg >= 3.0:
             dataTime = dataTime_UTC + datetime.timedelta(hours=8.0)
-            string = "{} {} {}\n".format(dataTime, topoLook.AzimuthDeg, topoLook.ElevationDeg)
+            string = "{} {} {}\n".format(dataTime.strftime("%Y/%m/%d %H:%M:%S"), round(topoLook.ElevationDeg, 3), round(topoLook.AzimuthDeg, 3))
             f.write(string)
 
         dataTime_UTC = dataTime_UTC + datetime.timedelta(seconds=1.0)

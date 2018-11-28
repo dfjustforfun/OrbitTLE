@@ -10,3 +10,7 @@ python3 calculateOrbitTLE.py --lon 113.7783 --lat 34.7444 --alt 0.07 --startTime
 
 TODO:
 1. The SDP4 process needs validation.
+
+### 2018-11-28
+
+1. change the format of output data
